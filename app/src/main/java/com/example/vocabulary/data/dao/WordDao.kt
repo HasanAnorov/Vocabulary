@@ -7,7 +7,7 @@ import com.example.vocabulary.data.model.Word
 @Dao
 interface WordDao {
 
-    @Query("SELECT*FROM book")
-    fun getAllWords() :List<Word>
+    @Query("SELECT*FROM book WHERE tip=tip")
+    fun getAllWords(tip:Int) :List<Word>
 
 }

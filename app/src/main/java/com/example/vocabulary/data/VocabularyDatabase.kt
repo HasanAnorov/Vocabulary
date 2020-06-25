@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.vocabulary.data.dao.WordDao
 import com.example.vocabulary.data.model.Word
 
-@Database(entities = [Word::class ],version = 1)
+@Database(entities = [Word::class ],version = 1,exportSchema = false)
 abstract class VocabularyDatabase:RoomDatabase() {
 
     companion object {
@@ -18,7 +18,9 @@ abstract class VocabularyDatabase:RoomDatabase() {
              "vocabulary"
 
         )
+
             .createFromAsset("vocabulary.db")
+            .allowMainThreadQueries()
             .build()
 
     }

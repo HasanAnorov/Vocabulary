@@ -11,11 +11,14 @@ data class Word(
     @ColumnInfo(name="type")
     val type:Int,
 
-    @ColumnInfo(name="nameUzb")
-    val nameUzb:String,
+    @ColumnInfo(name="word")
+    val word:String,
 
-    @ColumnInfo(name="nameEng")
-    val nameEng:String
+    @ColumnInfo(name="translation")
+    val translation:String,
+
+    @ColumnInfo(name="tip")
+    val tip:Int?
 
 
     )

@@ -11,4 +11,6 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="search">Search</string>
+    <string name="menu_uzb_eng">Uzb-Eng</string>
+    <string name="menu_eng_uzb">Eng-Uzb</string>
 </resources>
