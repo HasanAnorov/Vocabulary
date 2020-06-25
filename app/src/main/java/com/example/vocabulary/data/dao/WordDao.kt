@@ -8,6 +8,6 @@ import com.example.vocabulary.data.model.Word
 interface WordDao {
 
     @Query("SELECT*FROM book WHERE tip=tip")
-    fun getAllWords(tip:Int) :List<Word>
+    fun getAllWords() :List<Word>
 
 }

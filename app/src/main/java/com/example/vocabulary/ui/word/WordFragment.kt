@@ -20,12 +20,12 @@ class WordFragment:Fragment(R.layout.fragment_word) {
         recyclerView.adapter=myAdapter
         recyclerView.addItemDecoration(DividerItemDecoration(context,DividerItemDecoration.VERTICAL))
         dao=VocabularyDatabase.getInstance(requireContext()).dao()
-        var tip=arguments?.getInt(MainActivity.TYPE_ID)?:1
-        setData(tip)
+
+        setData()
     }
 
-    private fun setData(tip:Int){
-myAdapter.models=dao.getAllWords(tip)
+    private fun setData(){
+myAdapter.models=dao.getAllWords()
     }
 
 
