@@ -9,7 +9,7 @@ data class Word(
     @PrimaryKey val id :Int,
 
     @ColumnInfo(name="type")
-    val type:Int,
+    val type:String,
 
     @ColumnInfo(name="word")
     val word:String,

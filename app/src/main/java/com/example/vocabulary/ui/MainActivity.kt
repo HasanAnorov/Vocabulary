@@ -2,12 +2,17 @@ package com.example.vocabulary.ui
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.navigation.NavigationView
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
 import com.example.vocabulary.R
+import com.example.vocabulary.data.dao.WordDao
+import com.example.vocabulary.data.model.Word
 import com.example.vocabulary.ui.word.WordFragment
 
 class MainActivity : AppCompatActivity() {
@@ -18,12 +23,12 @@ class MainActivity : AppCompatActivity() {
         const val ENG_UZB=2
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
+
 
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
@@ -40,23 +45,27 @@ class MainActivity : AppCompatActivity() {
         fragment.arguments=bundle
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container,fragment).commit()
         navView.setNavigationItemSelectedListener {
-
+            val mFragment=WordFragment()
+            val mBundle=Bundle()
+            mBundle.getInt(TYPE_ID, UZB_ENG)
+            mFragment.arguments=mBundle
             when(it.itemId){
                 R.id.nav_uzb_eng ->{
-                    bundle.putInt(TYPE_ID, UZB_ENG)
-                    fragment.arguments=bundle
+                    mBundle.putInt(TYPE_ID, UZB_ENG)
+                    mFragment.arguments=mBundle
 
                 }
 
                 R.id.nav_eng_uzb ->{
-                    bundle.putInt(TYPE_ID, ENG_UZB)
-                    fragment.arguments=bundle
+                    mBundle.putInt(TYPE_ID, ENG_UZB)
+                    mFragment.arguments=mBundle
 
                 }
 
                 else -> return@setNavigationItemSelectedListener false
             }
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,fragment).commit()
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,mFragment).commit()
+            drawerLayout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
         }
 
@@ -65,12 +74,47 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-        val searchItem=menu.findItem(R.id.menuSearch)
+        val searchItem=menu.findItem(R.id.menu_search)
+    //    displayList=dao.searchAnimalByName(TYPE_ID.toInt(),searchItem.toString())
 
-        return true
+
+//        if(searchItem!=null){
+//            val searchView=searchItem.actionView as SearchView
+//            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+//                override fun onQueryTextSubmit(query: String?): Boolean {
+//                    return true
+//                }
+//
+//                override fun onQueryTextChange(newText: String?): Boolean {
+//
+//                    if(newText!!.isNotEmpty()){
+//
+//                    }else{
+//                        displayList.clear()
+//                    }
+//                    return true
+//                }
+//
+//            })
+//        }
+
+
+
+
+
+      return super.onCreateOptionsMenu(menu)
     }
+
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//
+//            val result :List<Word > = dao.searchAnimalByName(TYPE_ID.toInt(),"${item.toString()}%")
+//            myAdapter.models=result
+//
+//        return super.onOptionsItemSelected(item)
+//    }
+
+
 
 
 }
