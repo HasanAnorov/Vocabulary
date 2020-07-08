@@ -19,7 +19,6 @@ class WordListAdapter(private val listener:WordClickListener):RecyclerView.Adapt
 
         fun populateUzbModel(model:Word){
             itemView.word.text=model.word
-          //  itemView.type.text=model.type
             itemView.setOnClickListener {
                 listener.onWordItemClick(model.id)
             }

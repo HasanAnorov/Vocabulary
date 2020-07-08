@@ -16,4 +16,6 @@ interface WordDao {
     @Query("SELECT *FROM book WHERE tip=:tip and word like :word")
     fun searchAnimalByName(tip:Int,word:String):List<Word>
 
+    @Query("SELECT*FROM book WHERE type= :type")
+    fun getWordsByType(type:String) :List<Word>
 }
