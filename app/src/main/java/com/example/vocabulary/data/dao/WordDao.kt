@@ -1,5 +1,6 @@
 package com.example.vocabulary.data.dao
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Query
 import com.example.vocabulary.data.model.Word
@@ -18,4 +19,7 @@ interface WordDao {
 
     @Query("SELECT*FROM book WHERE type= :type")
     fun getWordsByType(type:String) :List<Word>
+
+    @Query("SELECT * FROM book  WHERE word LIKE :query")
+    fun getChapterName(query: String): LiveData<List<Word>>
 }

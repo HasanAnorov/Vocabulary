@@ -9,12 +9,12 @@ import android.widget.TextView
 import com.example.vocabulary.R
 import com.example.vocabulary.data.model.Word
 
-class SearchAdapter (context: Context, val layout: Int,val word:List<Word>):ArrayAdapter<Word>(context, layout, word) {
+class SearchAdapter (context: Context, val layout: Int,val chapter:List<Word>):ArrayAdapter<Word>(context, layout, chapter) {
     override fun getCount(): Int {
-        return word.size
+        return chapter.size
     }
     override fun getItem(position: Int): Word? {
-        return word.get(position)
+        return chapter.get(position)
     }
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var retView: View
