@@ -76,43 +76,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.main, menu)
         val searchItem=menu.findItem(R.id.menu_search)
-    //    displayList=dao.searchAnimalByName(TYPE_ID.toInt(),searchItem.toString())
-
-
-//        if(searchItem!=null){
-//            val searchView=searchItem.actionView as SearchView
-//            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-//                override fun onQueryTextSubmit(query: String?): Boolean {
-//                    return true
-//                }
-//
-//                override fun onQueryTextChange(newText: String?): Boolean {
-//
-//                    if(newText!!.isNotEmpty()){
-//
-//                    }else{
-//                        displayList.clear()
-//                    }
-//                    return true
-//                }
-//
-//            })
-//        }
-
-
-
-
 
       return super.onCreateOptionsMenu(menu)
     }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//
-//            val result :List<Word > = dao.searchAnimalByName(TYPE_ID.toInt(),"${item.toString()}%")
-//            myAdapter.models=result
-//
-//        return super.onOptionsItemSelected(item)
-//    }
 
 
 

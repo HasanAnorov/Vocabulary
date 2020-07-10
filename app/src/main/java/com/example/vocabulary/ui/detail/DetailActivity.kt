@@ -23,8 +23,6 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var dao:WordDao
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        nestedRecyclerView.adapter=mAdapter
-        nestedRecyclerView.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
 
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -32,6 +30,8 @@ class DetailActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_detail)
         dao=VocabularyDatabase.getInstance(this).dao()
+        nestedRecyclerView?.adapter=mAdapter
+        nestedRecyclerView?.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
         animalId = intent.getIntExtra(ANIMAL_ID, 0)
         currentWord = dao.getWordById(animalId)
         word.text = currentWord.word
