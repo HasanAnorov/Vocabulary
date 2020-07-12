@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import com.example.vocabulary.data.dao.WordDao
 import com.example.vocabulary.data.model.Word
 
-@Database(entities = [Word::class ],version = 3,exportSchema = false)
+@Database(entities = [Word::class ],version = 4,exportSchema = false)
 abstract class VocabularyDatabase:RoomDatabase() {
 
     companion object {

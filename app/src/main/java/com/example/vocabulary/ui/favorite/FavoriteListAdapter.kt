@@ -1,4 +1,4 @@
-package com.example.vocabulary.ui.detail
+package com.example.vocabulary.ui.favorite
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +9,7 @@ import com.example.vocabulary.data.model.Word
 import com.example.vocabulary.ui.word.WordClickListener
 import kotlinx.android.synthetic.main.item_word.view.*
 
-class DetailListAdapter(private val listener: WordClickListener):RecyclerView.Adapter<DetailListAdapter.DetailListViewHolder>() {
+class FavoriteListAdapter(private val listener: WordClickListener):RecyclerView.Adapter<FavoriteListAdapter.FavoriteListViewHolder>() {
 
     var models:List<Word> = listOf()
     set(value) {
@@ -17,8 +17,8 @@ class DetailListAdapter(private val listener: WordClickListener):RecyclerView.Ad
         notifyDataSetChanged()
     }
 
-    inner class DetailListViewHolder(itemView: View):RecyclerView.ViewHolder(itemView){
-        fun populateModel(model: Word){
+    inner class FavoriteListViewHolder(itemView:View):RecyclerView.ViewHolder(itemView){
+        fun populateFavorites(model:Word){
             itemView.word.text=model.word
             itemView.setOnClickListener {
                 listener.onWordItemClick(model.id)
@@ -26,14 +26,15 @@ class DetailListAdapter(private val listener: WordClickListener):RecyclerView.Ad
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DetailListViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FavoriteListViewHolder {
         val view=LayoutInflater.from(parent.context).inflate(R.layout.item_word,parent,false)
-        return  DetailListViewHolder(view)
+        return FavoriteListViewHolder(view)
     }
 
     override fun getItemCount(): Int =models.size
 
-    override fun onBindViewHolder(holder: DetailListViewHolder, position: Int) {
-        holder.populateModel(models[position])
+    override fun onBindViewHolder(holder: FavoriteListViewHolder, position: Int) {
+        holder.populateFavorites(models[position])
     }
+
 }

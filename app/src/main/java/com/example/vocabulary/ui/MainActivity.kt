@@ -10,9 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.fragment.app.Fragment
 import com.example.vocabulary.R
 import com.example.vocabulary.data.dao.WordDao
 import com.example.vocabulary.data.model.Word
+import com.example.vocabulary.ui.favorite.FavoriteFragment
 import com.example.vocabulary.ui.word.WordFragment
 
 class MainActivity : AppCompatActivity() {
@@ -45,21 +47,24 @@ class MainActivity : AppCompatActivity() {
         fragment.arguments=bundle
         supportFragmentManager.beginTransaction().replace(R.id.fragment_container,fragment).commit()
         navView.setNavigationItemSelectedListener {
-            val mFragment=WordFragment()
+            var mFragment= Fragment()
             val mBundle=Bundle()
             mBundle.getInt(TYPE_ID, UZB_ENG)
             mFragment.arguments=mBundle
             when(it.itemId){
                 R.id.nav_uzb_eng ->{
+                    mFragment=WordFragment()
                     mBundle.putInt(TYPE_ID, UZB_ENG)
                     mFragment.arguments=mBundle
-
                 }
 
                 R.id.nav_eng_uzb ->{
+                    mFragment=WordFragment()
                     mBundle.putInt(TYPE_ID, ENG_UZB)
                     mFragment.arguments=mBundle
-
+                }
+                R.id.nav_favorite->{
+                    mFragment=FavoriteFragment()
                 }
 
                 else -> return@setNavigationItemSelectedListener false

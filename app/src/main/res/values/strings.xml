@@ -14,4 +14,5 @@
     <string name="menu_uzb_eng">Uzb-Eng</string>
     <string name="menu_eng_uzb">Eng-Uzb</string>
     <string name="Home">Home</string>
+    <string name="menu_favorite">Favorites</string>
 </resources>

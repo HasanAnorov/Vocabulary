@@ -18,7 +18,10 @@ data class Word(
     val translation:String,
 
     @ColumnInfo(name="tip")
-    val tip:Int?
+    val tip:Int?,
+
+    @ColumnInfo(name="isFavorite")
+    var isFavorite:Int?=0
 
 
     )
